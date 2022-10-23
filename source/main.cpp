@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include "input.hpp"
+#include <iostream>
 
 int main () 
 {
+    std::cout << pi;
     char Operator;
     float num1, num2, result = 0;
     printf("Enter any one operator like +, -, *, / :");
