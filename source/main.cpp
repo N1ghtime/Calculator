@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include "calculator.hpp"
+#include "input.hpp"
+
 int main () 
 {
     char Operator;
