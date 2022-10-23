@@ -1,27 +1,33 @@
-#include <stdio.h>
-#include "input.hpp"
 #include <iostream>
+#include <stdio.h>
+#include "calculator.hpp"
+#include "input.hpp"
 
 int main () 
 {
-    std::cout << pi;
     char Operator;
     float num1, num2, result = 0;
-    printf("Enter any one operator like +, -, *, / :");
-    scanf("%c", &Operator);
-    printf("Enter values of num1 and num2:");
-    scanf("%f%f", &num1, &num2);
+
+    std::cout << "Enter a number for calculation:\n";
+    std::cin >> num1;
+
+    std::cout << "Enter calculation operator like +, -, *, / :\n";
+    std::cin >> Operator;
+
+    std::cout <<"Enter a number for calculation:\n";
+    std::cin >> num2;
+
     switch(Operator){
-        case '+': result = num1 + num2;
+        case '+': result = calculate_add(num1, num2);
             break;
-        case '-': result = num1 - num2;
+        case '-': result = calculate_substract(num1, num2);
             break;
-        case '*': result = num1 * num2;
+        case '*': result = calculate_multiply(num1, num2);
             break;
-        case '/': result = num1 / num2;
+        case '/': result = calculate_divide(num1, num2);
             break;
-        default: printf("Invalid Operator");
+        default: std::cout << "Invalid Operator";
     }
-    printf("The value = %f", result);
+    std::cout << "The value = " << result;
     return 0;
 }
