@@ -8,4 +8,4 @@ float calculate_multiply(float num1, float num2);
 
 float calculate_divide(float num1, float num2);
 
-int calculate_modulo(int num1, int num2);
+float calculate_modulo(int num1, int num2);
