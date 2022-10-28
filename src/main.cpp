@@ -3,19 +3,20 @@
 #include "calculator.hpp"
 #include "input.hpp"
 
+using namespace std;
 int main () 
 {
     char Operator;
     float num1, num2, result = 0;
 
-    std::cout << "Enter a number for calculation:\n";
-    std::cin >> num1;
+    cout << "Enter a number for calculation:\n";
+    cin >> num1;
 
-    std::cout << "Enter calculation operator like +, -, *, / :\n";
-    std::cin >> Operator;
+    cout << "Enter calculation operator like +, -, *, / :\n";
+    cin >> Operator;
 
-    std::cout <<"Enter a number for calculation:\n";
-    std::cin >> num2;
+    cout <<"Enter a number for calculation:\n";
+    cin >> num2;
 
     switch(Operator){
         case '+': result = calculate_add(num1, num2);
