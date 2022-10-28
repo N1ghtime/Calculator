@@ -24,3 +24,9 @@ float calculate_multiply(float num1, float num2) {
    result = num1 * num2; 
    return result;
 }
+
+// function to reminder of a division of two values
+int calculate_modulo(int num1, int num2) {
+   result = num1 % num2;
+   return result;
+}
