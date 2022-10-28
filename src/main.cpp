@@ -7,7 +7,7 @@ using namespace std;
 int main () 
 {
     char Operator;
-    float num1, num2, result = 0;
+    float num1, num2, result;
 
     cout << "Enter a number for calculation:\n";
     cin >> num1;
