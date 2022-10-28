@@ -27,8 +27,10 @@ int main ()
             break;
         case '/': result = calculate_divide(num1, num2);
             break;
+        case '%': result = calculate_modulo(num1, num2);
+            break;
         default: std::cout << "Invalid Operator";
     }
-    std::cout << "The value = " << result;
+    std::cout << "The value = " << result << endl;
     return 0;
 }
