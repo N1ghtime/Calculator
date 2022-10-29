@@ -1,11 +1,19 @@
 #include <iostream>
 #include <stdio.h>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
+
 #include "calculator.hpp"
-#include "input.hpp"
+#include "input.cpp"
+#include "output.hpp"
 
 using namespace std;
 int main () 
 {
+    //load configs
+    load_input_map("input_map.txt");
     char Operator;
     float num1, num2, result;
 
