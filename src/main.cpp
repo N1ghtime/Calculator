@@ -21,7 +21,7 @@ int main ()
     cout << "Enter a number for calculation:\n";
     cin >> num1;
 
-    cout << "Enter calculation operator like +, -, *, / :\n";
+    cout << "Enter calculation operator like + (add), - (substract), * (multiply), / (divide), % (modulo):\n";
     cin >> Operator;
 
     cout <<"Enter a number for calculation:\n";

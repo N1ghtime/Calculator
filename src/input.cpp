@@ -29,30 +29,31 @@ void load_button_data(string file_name) {
         string line;
         vector<Button> button(12);
         int i;
-        for (i=0;i<13;i++)
+        for (i=0;i<13;++i)
         {
             // TODO: how to use headers to map data?
-            if (i!=0)
+            if (i==0) //skip headers
             {
-                //skip headers
+                getline(myfile, line);
             }
             else
             {
             getline(myfile, line);
             // TODO: check if no data on line?
             istringstream ss(line);
+            // debug: cout << "Line:" << line << i <<'\n';
             string substr;
             vector<string> substr_val(4);
                 // loop tab delimited columns. expect: id, mode1, mode2, mode3
                 int j;
-                for (j=0;j<4;j++)
+                for (j=0;j<4;++j)
                 {
                     getline(ss,substr,'\t');
                     substr_val[j] = substr;
                     // TODO: check if no data found?
-                    cout << substr << '\n';
+                    // debug: cout << "Val:" << substr << j << '\n';
                 }
-                button[i].set_values(substr_val[0],substr_val[1],substr_val[2],substr_val[3]);
+            button[i-1].set_values(substr_val[0],substr_val[1],substr_val[2],substr_val[3]);
             }
         }
         myfile.close();
