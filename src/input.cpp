@@ -1,10 +1,4 @@
-#include <iostream>
-#include <stdio.h>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <string>
-using namespace std;
+#include "input.hpp"
 
 #define BUTTONS 12
 #define MODES   3
@@ -28,7 +22,7 @@ void load_button_data(string file_name) {
     }
     else
     {
-        // loop file, expect 13 lines (first one is headers)
+        // loop file, expect first line is header
         string line;
         vector<Button> button(BUTTONS);
         int i;
