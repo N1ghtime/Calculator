@@ -6,6 +6,9 @@
 #include <string>
 using namespace std;
 
+#define BUTTONS 12
+#define MODES   3
+
 class Button {
         string id;
         string mode1;
@@ -27,9 +30,9 @@ void load_button_data(string file_name) {
     {
         // loop file, expect 13 lines (first one is headers)
         string line;
-        vector<Button> button(12);
+        vector<Button> button(BUTTONS);
         int i;
-        for (i=0;i<13;++i)
+        for (i=0;i<=BUTTONS;++i)
         {
             // TODO: how to use headers to map data?
             if (i==0) //skip headers
@@ -43,10 +46,10 @@ void load_button_data(string file_name) {
             istringstream ss(line);
             // debug: cout << "Line:" << line << i <<'\n';
             string substr;
-            vector<string> substr_val(4);
+            vector<string> substr_val(MODES+1);
                 // loop tab delimited columns. expect: id, mode1, mode2, mode3
                 int j;
-                for (j=0;j<4;++j)
+                for (j=0;j<=MODES;++j)
                 {
                     getline(ss,substr,'\t');
                     substr_val[j] = substr;
