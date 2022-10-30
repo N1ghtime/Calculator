@@ -1,38 +1,60 @@
 #include <iostream>
 #include <stdio.h>
-#include <string>
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include <string>
 using namespace std;
 
-struct input_map_data {
+class Button {
         string id;
-        string mode_1;
-        string mode_2;
-        string mode_3;
-    };
+        string mode1;
+        string mode2;
+        string mode3;
+    public:
+        void set_values (string,string,string,string);
+};
 
-int load_input_map(string file_name) {
+void Button::set_values (string arg1,string arg2,string arg3,string arg4) {id=arg1; mode1=arg2; mode2=arg3; mode3=arg4;}
 
-    streampos file_size;
-    char * memblock;
-    string line;
-    //set position to end of file
+void load_button_data(string file_name) {
     ifstream myfile (file_name);
     if (!myfile.is_open())
     {
         cout << "Error, could not open file: " << file_name << endl;
-        return -1;
     }
-    file_size = myfile.tellg();
-    memblock = new char [file_size];
-    myfile.seekg(0,ios::beg);
-        while (getline(myfile, line))
+    else
+    {
+        // loop file, expect 13 lines (first one is headers)
+        string line;
+        vector<Button> button(12);
+        int i;
+        for (i=0;i<13;i++)
         {
-            cout << line << '\n';
+            // TODO: how to use headers to map data?
+            if (i!=0)
+            {
+                //skip headers
+            }
+            else
+            {
+            getline(myfile, line);
+            // TODO: check if no data on line?
+            istringstream ss(line);
+            string substr;
+            vector<string> substr_val(4);
+                // loop tab delimited columns. expect: id, mode1, mode2, mode3
+                int j;
+                for (j=0;j<4;j++)
+                {
+                    getline(ss,substr,'\t');
+                    substr_val[j] = substr;
+                    // TODO: check if no data found?
+                    cout << substr << '\n';
+                }
+                button[i].set_values(substr_val[0],substr_val[1],substr_val[2],substr_val[3]);
+            }
         }
         myfile.close();
-        return 1;
+    }
 }

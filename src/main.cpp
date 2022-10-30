@@ -6,14 +6,15 @@
 #include <vector>
 
 #include "calculator.hpp"
-#include "input.cpp"
+#include "input.hpp"
 #include "output.hpp"
 
 using namespace std;
 int main () 
 {
-    //load configs
-    load_input_map("input_map.txt");
+    //load button configs
+    load_button_data("button_map.txt");
+
     char Operator;
     float num1, num2, result;
 
