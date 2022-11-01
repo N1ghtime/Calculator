@@ -42,5 +42,6 @@ int main ()
         default: std::cout << "Invalid Operator";
     }
     std::cout << "The value = " << result << endl;
+    delete pButton;
     return 0;
 }

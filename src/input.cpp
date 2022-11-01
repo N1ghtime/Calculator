@@ -5,16 +5,14 @@
 
 //Button class keeps track of button config
 class Button {
-        string id;
-        string mode1;
-        string mode2;
-        string mode3;
+        int id;
+        vector<string> modes;
     public:
-        void set_values (string,string,string,string);
+        void set_values (int,vector<string>);
         string get_value(int);
 };
 
-void Button::set_values (string arg1,string arg2,string arg3,string arg4) {id=arg1; mode1=arg2; mode2=arg3; mode3=arg4;}
+void Button::set_values (int arg1,vector<string> arg2) {id=arg1; modes=arg2;}
 
 string Button::get_value(int arg)
 {
@@ -22,11 +20,11 @@ string Button::get_value(int arg)
     if (arg == 0)
         button_value = id;
     else if (arg == 1)
-        button_value = mode1;
+        button_value = modes[0];
     else if (arg == 2)
-        button_value = mode2;
+        button_value = modes[1];
     else if (arg == 3)
-        button_value = mode3;
+        button_value = modes[2];
     else
         cout << "Error:  " << arg << " is not member of Button class.";
     return button_value;
@@ -49,7 +47,7 @@ class Mode {
 int Mode::get_mode() {
     return mode;
 }
-
+// increments to next mode (same as pressing mode would do)
 void Mode::set_mode (int mode) {
     if (get_mode() < MODES)
     {
@@ -89,20 +87,21 @@ vector<Button *> load_button_data(string file_name) {
             // debug: cout << "Line:" << line << i <<'\n';
             string substr;
             vector<string> headers(MODES+1);
-            vector<string> substr_val(MODES+1);
+            vector<string> button_values(MODES);
+            int idx;
             if (i>0) //skip headers
             {
                 // loop tab delimited columns. expect: id, mode1, mode2, mode3
                 for (int j=0;j<=MODES;++j)
                 {
                     getline(ss,substr,'\t');
-                    if (j>0)
+                    if (j>0) // button values
                     {
-                        substr_val[j] = substr;
+                        button_values[j-1] = substr;
                         // TODO: check if no data found?
                         // debug: cout << "Val:" << substr << j << '\n';
                     }
-                    else
+                    else // j==0, button id
                     {
                         if (isInteger(substr)==true)
                             int idx = stoi(substr);
@@ -110,7 +109,7 @@ vector<Button *> load_button_data(string file_name) {
                             cout << "Error in " << file_name << ". " << substr << " under header " << headers[j] << " is not an integer." << endl;
                     }
                 }
-            button[i-1]->set_values(substr_val[0],substr_val[1],substr_val[2],substr_val[3]);
+            button[i-1]->set_values(idx,button_values);
             }
             else
             {
