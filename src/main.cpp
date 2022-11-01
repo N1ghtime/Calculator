@@ -13,8 +13,7 @@ using namespace std;
 int main () 
 {
     //load button configs
-    Button *pButton = ReturnButtonPointer();
-    vector<Button *> pButton = load_button_data("button_map.txt");
+    vector<Button> button_data = load_button_data("button_map.txt");
 
     char Operator;
     float num1, num2, result;
@@ -42,6 +41,5 @@ int main ()
         default: std::cout << "Invalid Operator";
     }
     std::cout << "The value = " << result << endl;
-    delete pButton;
     return 0;
 }

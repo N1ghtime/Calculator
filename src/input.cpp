@@ -8,9 +8,13 @@ class Button {
         int id;
         vector<string> modes;
     public:
+        Button(){}
+        ~Button(){}
         void set_values (int,vector<string>);
         string get_value(int);
 };
+
+typedef vector<Button> buttons_data;
 
 void Button::set_values (int arg1,vector<string> arg2) {id=arg1; modes=arg2;}
 
@@ -38,9 +42,9 @@ Button * ReturnButtonPointer()
 
 //Mode class keeps track of mode state
 class Mode {
-    int mode;
+    int mode = 1;
     public:
-        void set_mode (int);
+        void increment_mode ();
         int get_mode();
 } mode_state;
 
@@ -48,7 +52,7 @@ int Mode::get_mode() {
     return mode;
 }
 // increments to next mode (same as pressing mode would do)
-void Mode::set_mode (int mode) {
+void Mode::increment_mode () {
     if (get_mode() < MODES)
     {
         mode=get_mode()+1;
@@ -68,8 +72,9 @@ bool isInteger(string line)
 }
 
 // This function loads button data from file to Button class
-vector<Button *> load_button_data(string file_name) {
+vector<Button> load_button_data(string file_name) {
     ifstream myfile (file_name);
+    vector<Button> buttons_data(BUTTONS);
     if (!myfile.is_open())
     {
         cout << "Error, could not open file: " << file_name << endl;
@@ -78,10 +83,9 @@ vector<Button *> load_button_data(string file_name) {
     {
         // loop file, expect first line is header
         string line;
-        vector<Button *> button(BUTTONS);
-        for (int i=0;i<=BUTTONS;++i)
+        for (int i=0; i <= BUTTONS; i++)
         {
-            getline(myfile, line);
+            getline(myfile, line,'\n');
             // TODO: check if no data on line?
             istringstream ss(line);
             // debug: cout << "Line:" << line << i <<'\n';
@@ -89,13 +93,13 @@ vector<Button *> load_button_data(string file_name) {
             vector<string> headers(MODES+1);
             vector<string> button_values(MODES);
             int idx;
-            if (i>0) //skip headers
+            if (i > 0) //skip headers
             {
                 // loop tab delimited columns. expect: id, mode1, mode2, mode3
-                for (int j=0;j<=MODES;++j)
+                for (int j=0; j <= MODES; j++)
                 {
                     getline(ss,substr,'\t');
-                    if (j>0) // button values
+                    if (j > 0) // button values
                     {
                         button_values[j-1] = substr;
                         // TODO: check if no data found?
@@ -103,18 +107,18 @@ vector<Button *> load_button_data(string file_name) {
                     }
                     else // j==0, button id
                     {
-                        if (isInteger(substr)==true)
+                        if (isInteger(substr) == true)
                             int idx = stoi(substr);
                         else
                             cout << "Error in " << file_name << ". " << substr << " under header " << headers[j] << " is not an integer." << endl;
                     }
                 }
-            button[i-1]->set_values(idx,button_values);
+            buttons_data[i-1].set_values(idx,button_values);
             }
             else
             {
                 // save headers: loop tab delimited columns for header row: id, mode1, mode2, mode3
-                for (int k=0;k<=MODES;++k)
+                for (int k=0; k <= MODES; k++)
                 {
                     getline(ss,substr,'\t');
                     headers[k] = substr;
@@ -122,15 +126,13 @@ vector<Button *> load_button_data(string file_name) {
             }
         }
         myfile.close();
-        // Set initial mode to 1
-        mode_state.set_mode(1);
-        return button;
     }
+    return buttons_data;
 }
 
 // get pressed button value from Button class memory
-string get_pressed_button(int button_id, vector<Button *> button) {
+string get_pressed_button(int button_id, vector<Button> buttons_data) {
     int mode = mode_state.get_mode();
-    string button_value = button[button_id]->get_value(mode);
+    string button_value = buttons_data[button_id].get_value(mode);
     return button_value;
 }
