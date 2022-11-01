@@ -13,7 +13,8 @@ using namespace std;
 int main () 
 {
     //load button configs
-    load_button_data("button_map.txt");
+    Button *pButton = ReturnButtonPointer();
+    vector<Button *> pButton = load_button_data("button_map.txt");
 
     char Operator;
     float num1, num2, result;
