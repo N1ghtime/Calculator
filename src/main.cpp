@@ -1,34 +1,36 @@
 #include <iostream>
-#include <stdio.h>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
 
-//#include "calculator.hpp"
-//#include "input.hpp"
-//#include "output.hpp"
+//#include "Calculator.hpp"
 #include "constants.hpp"
 #include "ButtonInterface.hpp"
 #include "Button.hpp"
 
-using namespace std;
 int main () 
 {
-/*     //load button configs
-    vector<Button> button_data = load_button_data("button_map.txt");
+    // TODO memory debugging
 
+    // Initiate ButtonInterface
+    ButtonInterface buttonInterface;
+    
+    // For testing ButtonInterface and Button 
+    for(int i = 0; i < MODES * 2; i++) {
+        std::cout <<(*buttonInterface.GetButton(2)).GetConfiguration()[(*buttonInterface.GetButton(2)).GetMode()] << std::endl;
+        buttonInterface.incrementModes();
+    }
+    
+    /*  
+    // TODO implement working "Calculator" class and move/redo calculator logic there  
     char Operator;
     float num1, num2, result;
 
-    cout << "Enter a number for calculation:\n";
-    cin >> num1;
+    std::cout << "Enter a number for calculation:\n";
+    std::cin >> num1;
 
-    cout << "Enter calculation operator like + (add), - (substract), * (multiply), / (divide), % (modulo):\n";
-    cin >> Operator;
+    std::cout << "Enter calculation operator like + (add), - (substract), * (multiply), / (divide), % (modulo):\n";
+    std::cin >> Operator;
 
-    cout <<"Enter a number for calculation:\n";
-    cin >> num2;
+    std::cout <<"Enter a number for calculation:\n";
+    std::cin >> num2;
 
     switch(Operator){
         case '+': result = calculate_add(num1, num2);
@@ -43,13 +45,8 @@ int main ()
             break;
         default: std::cout << "Invalid Operator";
     }
-    std::cout << "The value = " << result << endl; */
-    ButtonInterface buttonInterface;
-    
-    for(int i = 0; i < 6; i++) {
-        std::cout <<(*buttonInterface.GetButton(2)).GetConfiguration()[(*buttonInterface.GetButton(2)).GetMode() - 1] << std::endl;
-        (*buttonInterface.GetButton(2)).incrementMode();
-    }
-    
+    std::cout << "The value = " << result << std::endl;
+    */
+
     return 0;
 }

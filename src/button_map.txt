@@ -10,4 +10,4 @@ INPUT_ID	MODE_1	MODE_2	MODE_3
 8	3	=	NULL
 9	0	+	dec
 10	.	exp	NULL
-11	mode	mode	mode
+11	mode    mode	mode

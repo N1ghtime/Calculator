@@ -30,17 +30,9 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                //"${workspaceRoot}/src/Button.hpp",
                 "${workspaceRoot}/src/Button.cpp",
-                //"${workspaceRoot}/src/ButtonInterface.hpp",
                 "${workspaceRoot}/src/ButtonInterface.cpp",
-                //"${workspaceRoot}/src/constants.hpp",
-                //"${workspaceRoot}/src/calculator.hpp",
-                //"${workspaceRoot}/src/calculator.cpp",
-                //"${workspaceRoot}/src/input.hpp",
-                //"${workspaceRoot}/src/input.cpp",
-                //"${workspaceRoot}/src/output.hpp",
-                //"${workspaceRoot}/src/output.cpp",
+                "${workspaceRoot}/src/Calculator.cpp",
                 "${workspaceRoot}/src/main.cpp",
                 "-o",
                 "${workspaceRoot}/build/calculator"

@@ -8,7 +8,7 @@ class Button {
         ~Button() = default;
 
         std::vector<std::string> GetConfiguration();
-        void incrementMode();
+        void IncrementMode();
         int GetMode();
         int GetID();
     
@@ -17,3 +17,5 @@ class Button {
         int mode;
         int ID;
 };
+
+/* mode and increment mode to parent class? */

@@ -7,6 +7,7 @@ class ButtonInterface {
         ~ButtonInterface();
         
         Button* GetButton(int);
+        void incrementModes();
     
     private:
         std::vector<Button*> interface;
