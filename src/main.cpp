@@ -47,8 +47,8 @@ int main ()
     ButtonInterface buttonInterface;
     
     for(int i = 0; i < 6; i++) {
-        std::cout << "a" <<buttonInterface.GetButton(2).GetConfiguration()[buttonInterface.GetButton(2).GetMode() - 1] << std::endl;
-        buttonInterface.GetButton(2).incrementMode();
+        std::cout <<(*buttonInterface.GetButton(2)).GetConfiguration()[(*buttonInterface.GetButton(2)).GetMode() - 1] << std::endl;
+        (*buttonInterface.GetButton(2)).incrementMode();
     }
     
     return 0;

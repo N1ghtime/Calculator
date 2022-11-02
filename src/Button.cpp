@@ -7,42 +7,49 @@
 
 // Constructor:
 // 1. Initializes button mode to default
-// 2. Loads buttons id and button configuration
+// 2. Loads button ID and button configuration
 Button::Button(int id) {
     mode = DEFAULT_MODE;
     int row = 0;
-    // Search row by id
+    // Search desired row by ID to "line" 
     std::string line;
     std::ifstream button_map ("button_map.txt");
     if(!button_map) std::cout << "could not open: button_map.txt" << std::endl;
-    while (row <= id) {
+    while (row <= id + 1) {
         std::getline(button_map, line);
+        row++;
     }
-    // Load first character to ID 
-    if (stoi(line.substr(0, 1)) == id) {
-        ID = stoi(line.substr(0, 1));
-    } else {
-        std::cout << "Mismaching id:s - " << id << std::endl;
-    }
-    // Erase ID and first delimeter
-    line.erase(0, 2);
-    // Load button configuration separated by delimeter 
+
+    // Load ID and configuration to vector "configuration"
     size_t pos = 0;
-    while (pos = line.find(FILE_DELIMETER) != std::string::npos) {
+    while ((pos = line.find(FILE_DELIMETER)) != std::string::npos) {
         configuration.push_back(line.substr(0, pos));
         line.erase(0, pos + 1);
     }
+    configuration.push_back(line);
+
+    // Load ID to "ID"
+    if (id != stoi(configuration[0])) {
+        std::cout << "Mismaching id:s - " << id << std::endl;
+    } else {
+        ID = id;
+    }
+    // Erase ID from "configuration"
+    configuration.erase(configuration.begin());
+
+    button_map.close();
 }
 
 std::vector<std::string> Button::GetConfiguration() {
     return configuration;
 }
 
+// Increment mode. If mode tries to increment over max mode, reset mode to default.
 void Button::incrementMode() {
     if (mode < MODES) {
-        mode++;
+        this->mode++;
     } else {
-        mode = 0;
+        this->mode = DEFAULT_MODE;
     }
 }
 

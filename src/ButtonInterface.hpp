@@ -4,10 +4,10 @@
 class ButtonInterface {
     public:
         ButtonInterface();
-        ~ButtonInterface() = default;
+        ~ButtonInterface();
         
-        Button GetButton(int);
+        Button* GetButton(int);
     
     private:
-        std::vector<Button> interface;
+        std::vector<Button*> interface;
 };

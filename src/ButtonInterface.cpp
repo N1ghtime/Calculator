@@ -6,10 +6,18 @@
 //Construct ButtonInterface
 ButtonInterface::ButtonInterface() {
     for(int i = 0; i < BUTTONS; i++) {
-        interface.push_back(Button(i));
+        Button* button = new Button(i);
+        interface.push_back(button);
+        std::cout << i << std::endl; //debug
     }
 }
 
-Button ButtonInterface::GetButton(int id) {
+ButtonInterface::~ButtonInterface() {
+   for(int i = 0; i < BUTTONS; i++) {
+        delete interface[i];
+    } 
+}
+
+Button* ButtonInterface::GetButton(int id) {
     return interface[id];
 }
