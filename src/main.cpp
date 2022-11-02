@@ -5,14 +5,17 @@
 #include <sstream>
 #include <vector>
 
-#include "calculator.hpp"
-#include "input.hpp"
-#include "output.hpp"
+//#include "calculator.hpp"
+//#include "input.hpp"
+//#include "output.hpp"
+#include "constants.hpp"
+#include "ButtonInterface.hpp"
+#include "Button.hpp"
 
 using namespace std;
 int main () 
 {
-    //load button configs
+/*     //load button configs
     vector<Button> button_data = load_button_data("button_map.txt");
 
     char Operator;
@@ -40,6 +43,13 @@ int main ()
             break;
         default: std::cout << "Invalid Operator";
     }
-    std::cout << "The value = " << result << endl;
+    std::cout << "The value = " << result << endl; */
+    ButtonInterface buttonInterface;
+    
+    for(int i = 0; i < 6; i++) {
+        std::cout << "a" <<buttonInterface.GetButton(2).GetConfiguration()[buttonInterface.GetButton(2).GetMode() - 1] << std::endl;
+        buttonInterface.GetButton(2).incrementMode();
+    }
+    
     return 0;
 }

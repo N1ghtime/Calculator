@@ -5,13 +5,14 @@
 
 //Button class keeps track of button config
 class Button {
-        int id;
-        vector<string> modes;
     public:
-        Button(){}
-        ~Button(){}
+        Button();
+        ~Button();
         void set_values (int,vector<string>);
         string get_value(int);
+    private:
+        int id;
+        vector<string> modes;
 };
 
 typedef vector<Button> buttons_data;
