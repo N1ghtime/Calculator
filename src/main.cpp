@@ -7,7 +7,7 @@
 
 #include "UnitTests.cpp"
 
-#define TESTING_MODE // use for running unit tests, otherwise comment out
+//#define TESTING_MODE // use for running unit tests, otherwise comment out
 
 int main () 
 {
