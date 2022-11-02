@@ -14,10 +14,10 @@ int main ()
     
     // For testing ButtonInterface and Button 
     for(int i = 0; i < MODES * 2; i++) {
-        std::cout <<(*buttonInterface.GetButton(2)).GetConfiguration()[(*buttonInterface.GetButton(2)).GetMode()] << std::endl;
+        std::cout << buttonInterface.getButton(2).getConfiguration()[buttonInterface.getButton(2).getMode()] << std::endl;
         buttonInterface.incrementModes();
     }
-    
+
     /*  
     // TODO implement working "Calculator" class and move/redo calculator logic there  
     char Operator;
