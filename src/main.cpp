@@ -5,18 +5,17 @@
 #include "ButtonInterface.hpp"
 #include "Button.hpp"
 
+#include "UnitTests.cpp"
+
+//#define TESTING_MODE // use for running unit tests, otherwise comment out
+
 int main () 
 {
+    #ifndef TESTING_MODE // run if TESTING_MODE is not defined
     // TODO memory debugging
 
     // Initiate ButtonInterface
     ButtonInterface buttonInterface;
-    
-    // For testing ButtonInterface and Button 
-    for(int i = 0; i < MODES * 2; i++) {
-        std::cout <<(*buttonInterface.GetButton(2)).GetConfiguration()[(*buttonInterface.GetButton(2)).GetMode()] << std::endl;
-        buttonInterface.incrementModes();
-    }
     
     /*  
     // TODO implement working "Calculator" class and move/redo calculator logic there  
@@ -47,6 +46,10 @@ int main ()
     }
     std::cout << "The value = " << result << std::endl;
     */
-
+    #else
+    // For testing ButtonInterface and Button
+    bool result1 = TestButtonInterface();
+    std::cout << "TestButtonInterface result: " << result1 << std::endl;
+    #endif
     return 0;
 }
