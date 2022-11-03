@@ -1,14 +1,15 @@
 #pragma once
 #include "Button.hpp"
+#include <memory>
 
 class ButtonInterface {
     public:
         ButtonInterface();
         ~ButtonInterface();
         
-        Button* GetButton(int);
+        Button& getButton(int);
         void incrementModes();
     
     private:
-        std::vector<Button*> interface;
+        std::vector<std::unique_ptr<Button>> interface;
 };

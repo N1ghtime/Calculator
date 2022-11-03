@@ -13,9 +13,9 @@ bool TestButtonInterface () {
     ButtonInterface buttonInterface;
     // test
     for(int i = 0; i < ITERATIONS; i++) {
-        output[i] = (*buttonInterface.GetButton(2)).GetConfiguration()[(*buttonInterface.GetButton(2)).GetMode()];
+        output[i] = buttonInterface.getButton(2).getConfiguration()[(buttonInterface.getButton(2)).getMode()];
         // std::cout << output[i] << std::endl; // DEBUG
-        (*buttonInterface.GetButton(2)).IncrementMode();
+        buttonInterface.incrementModes();
     }
     // check results
     if (reference == output)

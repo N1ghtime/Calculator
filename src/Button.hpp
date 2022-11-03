@@ -7,10 +7,10 @@ class Button {
         Button(int);
         ~Button() = default;
 
-        std::vector<std::string> GetConfiguration();
-        void IncrementMode();
-        int GetMode();
-        int GetID();
+        std::vector<std::string> getConfiguration();
+        void incrementMode();
+        int getMode();
+        int getID();
     
     private:
         std::vector<std::string> configuration;

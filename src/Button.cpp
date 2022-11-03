@@ -68,23 +68,23 @@ Button::Button(int id) {
     button_map.close();
 }
 
-std::vector<std::string> Button::GetConfiguration() {
+std::vector<std::string> Button::getConfiguration() {
     return configuration;
 }
 
 // Increment mode. If mode tries to increment over max mode, reset mode to 0.
-void Button::IncrementMode() {
+void Button::incrementMode() {
     if (mode < MODES - 1) {
-        this->mode++;
+        mode++;
     } else {
-        this->mode = 0;
+        mode = 0;
     }
 }
 
-int Button::GetMode() {
+int Button::getMode() {
     return mode;
 }
 
-int Button::GetID() {
+int Button::getID() {
     return ID;
 }
