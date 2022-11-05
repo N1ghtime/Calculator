@@ -1,3 +1,11 @@
+//TODO
+/* Pseudocode 
+- Receives parameters from IOManager as string
+- Calculate according to the number base
+- Pass result to IOManager as a string
+- Calculations for every base (2, 10, 16)
+    +, -, *, /, %, ^, sqrt
+ */
 
 // returns result of num2 added to num1
 float calculate_add(float num1, float num2);

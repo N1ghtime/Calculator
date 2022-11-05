@@ -17,6 +17,33 @@ int main ()
     // Initiate ButtonInterface
     ButtonInterface buttonInterface;
     
+    // Initiate Calculator
+    // Calculator calculator;
+
+    // Initiate InputManager
+    // InputManager inputManager;
+    
+    /* Pseudocode/draft for the loop 
+    loop{
+        button_voltage = analogRead(pin_with_button_circuit);
+        if (button_voltage >= b1 && button_voltage <= b1) {             // b1 = voltage range for button 1
+            // Pass BUTTON1 to inputManager 
+        } else if (button_voltage >= b2 && button_voltage <= b2) {      // b2 = voltage range for button 2
+            // Pass BUTTON2 to inputManager
+        }
+            ...
+            ...                                                         // b3...b11
+            ...
+        
+        } else if (button_voltage >= b12 && button_voltage <= b12) {     //b12 = voltage range for button 12
+            // Pass BUTTON12 to inputManager
+        } else {
+            // No button pressed, do nothing?
+        }
+    }
+    
+     */
+
     /*  
     // TODO implement working "Calculator" class and move/redo calculator logic there  
     char Operator;
