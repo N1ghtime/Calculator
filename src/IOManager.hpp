@@ -36,7 +36,7 @@ input
 
 DEC (base-10)
 - e.g. vector [2, 2, 3] is stored as string 223 (Base-10)
-- Able to receive only one "." at the time
+- Able to receive only numbers 0-9, ".", "e" and operators
     - Does not update vector if multiple "." are inputed in a row
     - Can not input "." as a first input item
 
@@ -53,5 +53,5 @@ Output
 - Print "print_row1" and "print_row2" after every input
     - row 1: result
     - row 2: current input
-        - Print currently active base and mode to lower right corner e.g. (d1 = base-10, mode 1)
+        - Print currently active base and mode to lower right corner e.g. (D1 = base-10, mode 1)
  */
