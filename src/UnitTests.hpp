@@ -1,5 +1,8 @@
 #pragma once
 #include "ButtonInterface.hpp"
 
-// For testing ButtonInterface and Button
-bool TestButtonInterface ();
+// For testing ButtonInterface: incrementMode
+bool TestButtonInterfaceMode ();
+
+// For testing ButtonInterface: incrementBase
+bool TestButtonInterfaceBase ();

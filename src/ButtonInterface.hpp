@@ -1,15 +1,22 @@
 #pragma once
-#include "Button.hpp"
 #include <memory>
+#include "Button.hpp"
 
 class ButtonInterface {
     public:
         ButtonInterface();
         ~ButtonInterface();
         
-        Button& getButton(int);
-        void incrementModes();
+        
+        std::string getButtonConfiguration(int);
+        int getMode();
+        int getBase();
+        void incrementMode();
+        void incrementBase();
     
     private:
+        Button& getButton(int);
         std::vector<std::unique_ptr<Button>> interface;
+        int mode;
+        int base;
 };

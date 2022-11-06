@@ -3,21 +3,21 @@
 The physical calculator has buttons for user input and LCD display for displaying output. ATMega328P is used as microcontroller (Arduino Nano)
 - Buttons are represented in software with Button class.
 - The whole button interface is represented in software with ButtonInterface class. 
-- User input is interpreted with InputManager class.
-- Calculator class is used for calculating required mathematical operations and storing relevant data for calculations (e.g. input and result)
-- Output to LCD display is conducted by OutputManager class
+- User input and output is managed with IOManager class.
+- Calculator class is used for calculating required mathematical operations.
+- ErrorHandler is used for errors. UnitTests are used for testing features.
 
-Calculator.ccp
-// Inputs from 0 to 9. Mode: operator, number representation etc.  Sel: subcategory for mode (i.e. select correct operator from +,-,*,/ or select number representation from bin, hex, dec)
-
-inputs: num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,mode,sel
+Calculator has n buttons (ID 0 ... n-1). Default n = 12.
+Buttons have n modes (0 ... n-1). Default n = 3
+Each mode may have up to n configurations
+Button configuration is loaded from a .txt file
 
 logic:
-1. sequence of inputs is inserted (i.e. num1 -> + -> num2)
-2. execute calculation
-3. output as float 
+1. sequence of inputs is inserted using physical buttons (i.e. num1 -> + -> num2)
+2. software interprets input and executes calculation accordingly
+3. LCD display is used to display result, current input, current mode and active number base 
 
-**Programming practise guidelines**
+## Programming practise guidelines
 - Keep main branch clean
     - Develop new features in branches
     - Use Pull requests if code is not peer reviewed
