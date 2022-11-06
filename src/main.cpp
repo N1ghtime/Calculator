@@ -7,7 +7,7 @@
 
 #include "UnitTests.cpp"
 
-//#define TESTING_MODE // use for running unit tests, otherwise comment out
+// #define TESTING_MODE // use for running unit tests, otherwise comment out
 
 int main () 
 {
@@ -20,25 +20,25 @@ int main ()
     // Initiate Calculator
     // Calculator calculator;
 
-    // Initiate InputManager
-    // InputManager inputManager;
+    // Initiate IOManager
+    // InputManager ioManager;
     
     /* Pseudocode/draft for the loop 
     loop{
         button_voltage = analogRead(pin_with_button_circuit);
         if (button_voltage >= b1 && button_voltage <= b1) {             // b1 = voltage range for button 1
-            // Pass BUTTON1 to inputManager 
+            // Pass BUTTON1 to ioManager 
         } else if (button_voltage >= b2 && button_voltage <= b2) {      // b2 = voltage range for button 2
-            // Pass BUTTON2 to inputManager
+            // Pass BUTTON2 to ioManager
         }
             ...
             ...                                                         // b3...b11
             ...
         
         } else if (button_voltage >= b12 && button_voltage <= b12) {     //b12 = voltage range for button 12
-            // Pass BUTTON12 to inputManager
+            // Pass BUTTON12 to ioManager
         } else {
-            // No button pressed, do nothing?
+            // No button pressed, do nothing
         }
     }
     
@@ -74,9 +74,13 @@ int main ()
     std::cout << "The value = " << result << std::endl;
     */
     #else
-    // For testing ButtonInterface and Button
-    bool result1 = TestButtonInterface();
-    std::cout << "TestButtonInterface result: " << result1 << std::endl;
+    // For testing ButtonInterface: incrementMode
+    bool result1 = TestButtonInterfaceMode();
+    std::cout << "TestButtonInterfaceMode result: " << result1 << std::endl;
+
+    // For testing ButtonInterface: incrementBase
+    bool result2 = TestButtonInterfaceBase();
+    std::cout << "TestButtonInterfaceBase result: " << result2 << std::endl;
     #endif
     return 0;
 }

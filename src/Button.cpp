@@ -1,14 +1,10 @@
-#include "Button.hpp"
-#include "constants.hpp"
 #include <fstream>
 #include <iostream> // ERROR, DEBUG
+#include "Button.hpp"
+#include "constants.hpp"
 
-// Constructor:
-// 1. Initializes button mode to default
-// 2. Loads button ID and button configuration
+// Constructor loads button ID and button configuration from .txt file
 Button::Button(int id) {
-    // Set mode to default
-    mode = DEFAULT_MODE;
     
     std::string line;
     std::ifstream button_map (FILE_PATH);
@@ -60,7 +56,7 @@ Button::Button(int id) {
     if (id != stoi(configuration[0])) {
         std::cout << "Mismaching id:s - " << id << std::endl; // ERROR
     } else {
-        ID = id;
+        buttonid = id;
     }
     // Erase ID from "configuration"
     configuration.erase(configuration.begin());
@@ -70,21 +66,4 @@ Button::Button(int id) {
 
 std::vector<std::string> Button::getConfiguration() {
     return configuration;
-}
-
-// Increment mode. If mode tries to increment over max mode, reset mode to 0.
-void Button::incrementMode() {
-    if (mode < MODES - 1) {
-        mode++;
-    } else {
-        mode = 0;
-    }
-}
-
-int Button::getMode() {
-    return mode;
-}
-
-int Button::getID() {
-    return ID;
 }
