@@ -21,7 +21,7 @@ Button& ButtonInterface::getButton(int id) {
     return *interface[id];
 }
 
-std::string ButtonInterface::getButtonConfiguration(int id) {
+std::string ButtonInterface::getButtonConfiguration(char id) {
     Button b = *interface[id];
     std::string config = b.getConfiguration()[mode];
     return config;
@@ -38,9 +38,18 @@ void ButtonInterface::incrementMode() {
     } else {
         mode = 0;
     }
+   /*  // Iterator to current base in the "MODES" vector
+    auto itr = std::find(MODES.begin(), MODES.end(), base);
+    // Index of the iterator / current mode in the "MODES" vector
+    int index = std::distance(MODES.begin(), itr);
+    if (index < MODES.size() - 1) {
+        mode = MODES[index + 1];
+    } else {
+        mode = MODES[0];
+    } */
 }
 
-int ButtonInterface::getBase() {
+char ButtonInterface::getBase() {
     return base;
 }
 

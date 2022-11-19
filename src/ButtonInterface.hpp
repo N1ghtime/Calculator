@@ -8,9 +8,9 @@ class ButtonInterface {
         ~ButtonInterface();
         
         
-        std::string getButtonConfiguration(int);
+        std::string getButtonConfiguration(char);
         int getMode();
-        int getBase();
+        char getBase();
         void incrementMode();
         void incrementBase();
     
@@ -18,5 +18,5 @@ class ButtonInterface {
         Button& getButton(int);
         std::vector<std::unique_ptr<Button>> interface;
         int mode;
-        int base;
+        char base;
 };

@@ -32,7 +32,8 @@
                 "-g",
                 "${workspaceRoot}/src/Button.cpp",
                 "${workspaceRoot}/src/ButtonInterface.cpp",
-                "${workspaceRoot}/src/Calculator.cpp",
+                "${workspaceRoot}/src/ErrorHandler.cpp",
+                "${workspaceRoot}/src/IOManager.cpp",
                 "${workspaceRoot}/src/main.cpp",
                 "-o",
                 "${workspaceRoot}/build/calculator"

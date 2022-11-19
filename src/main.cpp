@@ -1,27 +1,21 @@
 #include <iostream>
 
 //#include "Calculator.hpp"
-#include "constants.hpp"
-#include "ButtonInterface.hpp"
-#include "Button.hpp"
+#include "IOManager.hpp"
 
 #include "UnitTests.cpp"
 
-// #define TESTING_MODE // use for running unit tests, otherwise comment out
+//#define TESTING_MODE // use for running unit tests, otherwise comment out
 
 int main () 
 {
     #ifndef TESTING_MODE // run if TESTING_MODE is not defined
     // TODO memory debugging
 
-    // Initiate ButtonInterface
-    ButtonInterface buttonInterface;
-    
-    // Initiate Calculator
-    // Calculator calculator;
 
-    // Initiate IOManager
-    // InputManager ioManager;
+    IOManager interface;
+    interface.initiate();
+  
     
     /* Pseudocode/draft for the loop 
     loop{

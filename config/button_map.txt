@@ -6,8 +6,8 @@ NPUT_ID	MODE_1	MODE_2	MODE_3
 4	5	sqrt	E
 5	6	clear	F
 6	1	-	A
-7	2	^	B
+7	2	exp	B
 8	3	=	C
 9	0	+	base
-10	.	exp	NULL
+10	.	NULL	NULL
 11	mode	mode	mode

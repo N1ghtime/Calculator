@@ -55,3 +55,23 @@ Output
     - row 2: current input
         - Print currently active base and mode to lower right corner e.g. (D1 = base-10, mode 1)
  */
+#include <string>
+#include "constants.hpp"
+#include "ButtonInterface.hpp"
+class IOManager {
+    public:
+        IOManager();
+        ~IOManager();
+        void write();
+        void clear();
+        void clearAll();
+        void initiate();
+        void incrementCursor();
+
+    private:
+        char display[LCD_ROWS][LCD_COLUMNS];
+        int cursor;
+        ButtonInterface buttoninterface;
+        std::string inputdata;
+        std::string result;
+};

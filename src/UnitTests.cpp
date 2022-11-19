@@ -26,14 +26,14 @@ bool TestButtonInterfaceMode () {
 
 bool TestButtonInterfaceBase () {
     // initialize
-    std::array<int, ITERATIONS> reference = {10, 16, 2, 10, 16, 2}; // expected results
-    std::array<int, ITERATIONS> output {};
+    std::array<char, ITERATIONS> reference = {'d', 'h', 'b', 'd', 'h', 'b'}; // expected results
+    std::array<char, ITERATIONS> output {};
     bool result = false;
     ButtonInterface buttonInterface;
     // test
     for(int i = 0; i < ITERATIONS; i++) {
         output[i] = buttonInterface.getBase();
-        // std::cout << output[i] << std::endl; // DEBUG
+        std::cout << output[i] << std::endl; // DEBUG
         buttonInterface.incrementBase();
     }
     // check results
