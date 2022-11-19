@@ -66,24 +66,15 @@ void IOManager::initiate() {
         
         if(isUniversal(config)) {
             if(config == "backspace") {
-                for(int i = 0; i < LCD_COLUMNS-1; i++) {
-                    if(i = 0) {
-                        break;
-                    } else if(i = LCD_COLUMNS-2) {
-                        display[LCD_ROWS-1][i] == ' ';
-                        cursor--;
-                        break;
-                    } else if(display[LCD_ROWS-1][i] == ' ') {
-                        display[LCD_ROWS-1][i-1] = ' ';
-                        cursor--;
-                        break;
-                    }
+                if(cursor != 0) {
+                    display[LCD_ROWS-1][cursor-1] = ' ';
+                    cursor--;
                 }
             } else if (config == "clear") {
                 clear();
             } else if (config == "base") {
                 buttoninterface.incrementBase();
-                clear();
+                clearAll();
             } else if (config == "mode") {
                 buttoninterface.incrementMode();
                  display[LCD_ROWS-1][LCD_COLUMNS-1] = '0' + buttoninterface.getMode();
@@ -99,6 +90,7 @@ void IOManager::initiate() {
                 if (!isBin(config)) break; // check if pressed button's configuration is viable in BIN mode
                 else {
                     
+                    //previousconfig = config;
                     break;
                 }
             // DEC
@@ -129,12 +121,14 @@ void IOManager::initiate() {
                 } else if(config == ".") {
 
                 }
-                    break;
+                previousconfig = config;
+                break;
             // HEX
             case 'h':
                 if (!isHex(config)) break; // check if pressed button's configuration is viable in HEX mode
                 else {
                     
+                    //previousconfig = config;
                     break;
                 }
             
