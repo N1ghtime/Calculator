@@ -57,7 +57,7 @@ void IOManager::incrementCursor() {
 void IOManager::initiate() {
     bool programstatus = true;
     while(programstatus) {
-        std::cout << "Enter button ID: 0-" << BUTTONS-1 << std::endl;
+        std::cout << "Enter button ID: 0-" << BUTTONS-1 << " ('q' = quit)" << std::endl;
         std::string strid;
         std::cin >> strid;
         // if 'q' is given, quit program.
