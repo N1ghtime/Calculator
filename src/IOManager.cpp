@@ -36,6 +36,7 @@ void IOManager::clear() {
     }
     display[LCD_ROWS-1][LCD_COLUMNS-2] = buttoninterface.getBase();
     display[LCD_ROWS-1][LCD_COLUMNS-1] = '0' + buttoninterface.getMode();
+    cursor = 0;
 }
 
 void IOManager::clearAll() {
@@ -45,7 +46,6 @@ void IOManager::clearAll() {
         }
         clear();
     }
-    cursor = 0;
 }
 
 void IOManager::incrementCursor() {
@@ -60,9 +60,13 @@ void IOManager::initiate() {
         std::cout << "Enter button ID: 0-" << BUTTONS-1 << std::endl;
         std::string strid;
         std::cin >> strid;
+        // if 'q' is given, quit program.
+        if(strid == "q") {
+            programstatus = false;
+            break;
+        }
         int id = std::stoi(strid);
         std::string config = buttoninterface.getButtonConfiguration(id);
-        std::string previousconfig;
         
         if(isUniversal(config)) {
             if(config == "backspace") {
@@ -77,29 +81,20 @@ void IOManager::initiate() {
                 clearAll();
             } else if (config == "mode") {
                 buttoninterface.incrementMode();
-                 display[LCD_ROWS-1][LCD_COLUMNS-1] = '0' + buttoninterface.getMode();
+                display[LCD_ROWS-1][LCD_COLUMNS-1] = '0' + buttoninterface.getMode();
             } else if (config == "NULL") {
                 // Do nothing
             }
-            previousconfig = config;
         }
 
         switch (buttoninterface.getBase())
         {   // BIN
             case 'b':
                 if (!isBin(config)) break; // check if pressed button's configuration is viable in BIN mode
-                else {
-                    
-                    //previousconfig = config;
-                    break;
-                }
-            // DEC
-            case 'd':
-                if (!isDec(config)) break; // check if pressed button's configuration is viable in DEC mode
-                if(isInteger(config) && cursor < LCD_COLUMNS-2){
-                    // add inputed number to the display
+                if (((config == "0") | (config == "1")) && (cursor < LCD_COLUMNS-2)) {
                     display[LCD_ROWS-1][cursor] = config.c_str()[0];
                     incrementCursor();
+                    break;
                 } else if(isOperator(config)) {
                     if(config == "+") {
                         
@@ -118,24 +113,86 @@ void IOManager::initiate() {
                     } else if(config == "=") {
                         
                     }
-                } else if(config == ".") {
-
                 }
-                previousconfig = config;
+                    break;
+            // DEC
+            case 'd':
+                if (!isDec(config)) break; // check if pressed button's configuration is viable in DEC mode
+                if(isInteger(config) && cursor < LCD_COLUMNS-2){
+                    // add inputed number to the display
+                    display[LCD_ROWS-1][cursor] = config.c_str()[0];
+                    incrementCursor();
+                    break;
+                } else if(isOperator(config)) { // TODO
+                    if(config == "+") {
+                        
+                    } else if(config == "-") {
+                        
+                    } else if(config == "*") {
+                        
+                    } else if(config == "/") {
+                        
+                    } else if(config == "%") {
+                        
+                    } else if(config == "exp") {
+                        
+                    } else if(config == "sqrt") {
+                        
+                    } else if(config == "=") {
+                        
+                    }
+                    break;
+                } else if(config == ".") {
+                    // Check if '.' is already in input. More than one '.' is not allowed
+                    bool dotalready = false;
+                    for(int i = 0; i < LCD_COLUMNS-2; i++) {
+                        if(display[LCD_ROWS-1][i] == '.') dotalready = true;
+                    }
+                    if((cursor < LCD_COLUMNS-2) && (cursor > 0) && !dotalready) {
+                        display[LCD_ROWS-1][cursor] = '.';
+                        incrementCursor();
+                    }
+                }
                 break;
             // HEX
             case 'h':
                 if (!isHex(config)) break; // check if pressed button's configuration is viable in HEX mode
-                else {
-                    
-                    //previousconfig = config;
+                if(isInteger(config) && cursor < LCD_COLUMNS-2){
+                    // add inputed number to the display
+                    display[LCD_ROWS-1][cursor] = config.c_str()[0];
+                    incrementCursor();
                     break;
+                } else if(isHexChar(config) && cursor < LCD_COLUMNS-2){
+                    // add inputed hexchar to the display
+                    display[LCD_ROWS-1][cursor] = config.c_str()[0];
+                    incrementCursor();
+                    break;
+                } else if(isOperator(config)) {
+                    if(config == "+") {
+                        
+                    } else if(config == "-") {
+                        
+                    } else if(config == "*") {
+                        
+                    } else if(config == "/") {
+                        
+                    } else if(config == "%") {
+                        
+                    } else if(config == "exp") {
+                        
+                    } else if(config == "sqrt") {
+                        
+                    } else if(config == "=") {
+                        
+                    }
                 }
+                break;
             
             default:
                 // ERROR
                 break;
         }
+        // Update display
         write();
-    }
+        }
 }
