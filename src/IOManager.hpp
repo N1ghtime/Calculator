@@ -69,9 +69,18 @@ class IOManager {
         void incrementCursor();
 
     private:
+         // 2D array (rows and columns/cells) simulates LCD display.
+         // display[LCD_ROWS-1] (last rowindex) indicates input row
+         // display[LCD_ROWS-2] (second last rowindex) indicates result row: stores number which indicates calculation result or recently added input
         char display[LCD_ROWS][LCD_COLUMNS];
-        int cursor;
-        ButtonInterface buttoninterface;
-        std::string inputdata;
-        std::string result;
+        int cursor; // indicates location of next available index in display input row 
+        ButtonInterface buttoninterface; // buttoninterface constructor is called with IOManager constructor
+        // when operation is activated
+        // if input row is empty, store result row to num1
+        // else store input row to num2 and result row to num1
+        double num1; // stores first number used in calculations
+        double num2; // stores second number used in calculations 
+        bool operationactive; // is operation (+, -, etc..) active
+        double result; // store result
+        std::string operation;
 };

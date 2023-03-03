@@ -37,36 +37,6 @@ int main ()
     }
     
      */
-
-    /*  
-    // TODO implement working "Calculator" class and move/redo calculator logic there  
-    char Operator;
-    float num1, num2, result;
-
-    std::cout << "Enter a number for calculation:\n";
-    std::cin >> num1;
-
-    std::cout << "Enter calculation operator like + (add), - (substract), * (multiply), / (divide), % (modulo):\n";
-    std::cin >> Operator;
-
-    std::cout <<"Enter a number for calculation:\n";
-    std::cin >> num2;
-
-    switch(Operator){
-        case '+': result = calculate_add(num1, num2);
-            break;
-        case '-': result = calculate_substract(num1, num2);
-            break;
-        case '*': result = calculate_multiply(num1, num2);
-            break;
-        case '/': result = calculate_divide(num1, num2);
-            break;
-        case '%': result = calculate_modulo(num1, num2);
-            break;
-        default: std::cout << "Invalid Operator";
-    }
-    std::cout << "The value = " << result << std::endl;
-    */
     #else
     // For testing ButtonInterface: incrementMode
     bool result1 = TestButtonInterfaceMode();

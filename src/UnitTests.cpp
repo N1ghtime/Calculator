@@ -33,7 +33,7 @@ bool TestButtonInterfaceBase () {
     // test
     for(int i = 0; i < ITERATIONS; i++) {
         output[i] = buttonInterface.getBase();
-        std::cout << output[i] << std::endl; // DEBUG
+        //std::cout << output[i] << std::endl; // DEBUG
         buttonInterface.incrementBase();
     }
     // check results

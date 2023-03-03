@@ -43,6 +43,7 @@ bool isUniversal(std::string str) {
             (str ==  "clear") ||
             (str ==  "base") ||
             (str ==  "mode") ||
+            (str ==  ".") ||
             (str ==  "NULL");
 }
 
@@ -54,8 +55,7 @@ bool isBin(std::string str) {
 
 bool isDec(std::string str) {
     return  isOperator(str) ||
-            isInteger(str) ||
-            (str ==  ".") ;
+            isInteger(str);
 }
 
 bool isHex(std::string str) {
