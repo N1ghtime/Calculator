@@ -16,7 +16,6 @@ int main ()
     IOManager interface;
     interface.initiate();
   
-    
     /* Pseudocode/draft for the loop 
     loop{
         button_voltage = analogRead(pin_with_button_circuit);
